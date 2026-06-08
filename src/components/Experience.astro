@@ -1,0 +1,28 @@
+---
+const jobs = [
+  {
+    title: 'Front-end Engineer',
+    company: 'Bupunku',
+    date: '2023 — Present',
+    description:
+      'I’ve delivered high-impact front-end solutions for real-time, performance-critical products, improving stability, scalability, and user experience. My work includes building custom visualization tools, modernizing Angular applications, optimizing UIs for constrained hardware, and strengthening team delivery through technical leadership, architecture decisions, and close cross-functional collaboration.',
+  },
+];
+---
+
+<section class="pt-header-fixed-adjust section h-dvh">
+  <h2 class="section-heading">Experience</h2>
+  <ul>
+    {
+      jobs.map((job) => (
+        <li>
+          <h3>
+            {job.title} · {job.company}
+          </h3>
+          <p>{job.date}</p>
+          <p>{job.description}</p>
+        </li>
+      ))
+    }
+  </ul>
+</section>

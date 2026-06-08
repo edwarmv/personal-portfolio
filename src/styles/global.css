@@ -1,13 +1,94 @@
 @import "tailwindcss";
+@import "@fontsource-variable/montserrat/wght.css";
+@import "@fontsource-variable/geist/wght.css";
 
 @theme {
-  --container-content-width: 1024px;
+  --container-content-width: 1200px;
+  --font-headline: "Montserrat Variable";
+  --font-body: "Geist Mono";
+  --padding-header-fixed-adjust: var(--header-height);
+  --text-step-7: var(--step-7);
+  --text-step-7--line-height: 1.2;
+  --text-step-8: var(--step-8);
+  --text-step-8--line-height: 1.2;
+  --text-step-0: var(--step-0);
+  --text-step-0--line-height: 1.5;
+  --color-surface: #faf7f0;
+  --color-on-surface: #4a4947;
+  --color-primary: #b17457;
+  --color-secondary: #d8d2c2;
 }
 
 :root {
   color-scheme: light dark;
 }
 
+/* @link https://utopia.fyi/type/calculator?c=390,16,1.2,1250,18,1.25,8,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+:root {
+  /* Step -2: 11.1111px → 11.52px */
+  --step--2: clamp(0.6944rem, 0.6829rem + 0.0475vw, 0.72rem);
+  /* Step -1: 13.3333px → 14.4px */
+  --step--1: clamp(0.8333rem, 0.8031rem + 0.124vw, 0.9rem);
+  /* Step 0: 16px → 18px */
+  --step-0: clamp(1rem, 0.9433rem + 0.2326vw, 1.125rem);
+  /* Step 1: 19.2px → 22.5px */
+  --step-1: clamp(1.2rem, 1.1065rem + 0.3837vw, 1.4063rem);
+  /* Step 2: 23.04px → 28.125px */
+  --step-2: clamp(1.44rem, 1.2959rem + 0.5913vw, 1.7578rem);
+  /* Step 3: 27.648px → 35.1563px */
+  --step-3: clamp(1.728rem, 1.5152rem + 0.8731vw, 2.1973rem);
+  /* Step 4: 33.1776px → 43.9453px */
+  --step-4: clamp(2.0736rem, 1.7684rem + 1.2521vw, 2.7466rem);
+  /* Step 5: 39.8131px → 54.9316px */
+  --step-5: clamp(2.4883rem, 2.0598rem + 1.758vw, 3.4332rem);
+  /* Step 6: 47.7757px → 68.6646px */
+  --step-6: clamp(2.986rem, 2.3939rem + 2.4289vw, 4.2915rem);
+  /* Step 7: 57.3309px → 85.8307px */
+  --step-7: clamp(3.5832rem, 2.7754rem + 3.3139vw, 5.3644rem);
+  /* Step 8: 68.7971px → 107.2884px */
+  --step-8: clamp(4.2998rem, 3.2089rem + 4.4757vw, 6.7055rem);
+}
+
+/* https://colorffy.com/mesh-gradient-generator?colors=%23f99052&colors=%237fd1ae */
+:root {
+  --_noise-texture: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 300'><defs><filter id='n' x='0' y='0' width='100%' height='100%' color-interpolation-filters='sRGB'><feTurbulence type='fractalNoise' baseFrequency='0.3' numOctaves='3' stitchTiles='stitch' result='t'/><feColorMatrix type='saturate' values='0' in='t' result='g'/><feComponentTransfer in='g' result='a'><feFuncA type='linear' slope='0.5'/></feComponentTransfer></filter></defs><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --_noise-size: 8.5%;
+  --_gradient-blend-mode: normal;
+  --_gradient-blur: 0px;
+  --_gradient:
+    radial-gradient(at 54% 71%, #f99052 0px, transparent 50%),
+    radial-gradient(at 99% 72%, #7fd1ae 0px, transparent 50%);
+}
+
 body {
-  font-family: "Geist Mono", ui-monospace, monospace;
+  color: var(--color-on-surface);
+  font-family: "Geist Variable", ui-monospace, monospace;
+  background: var(--color-surface);
+  @apply text-step-0;
+}
+
+.gradient {
+  background: var(--_gradient) var(--color-surface);
+  mix-blend-mode: var(--_gradient-blend-mode);
+}
+
+.noise {
+  background-image: var(--_noise-texture);
+  background-size: var(--_noise-size);
+  background-position: center;
+  background-repeat: repeat;
+}
+
+.frosted-backdrop {
+  backdrop-filter: blur(var(--_gradient-blur)) contrast(100%) brightness(100%);
+  -webkit-backdrop-filter: blur(var(--_gradient-blur)) contrast(100%)
+    brightness(100%);
+}
+
+.section {
+  @apply max-w-content-width mx-auto w-full px-6;
+}
+
+.section-heading {
+  @apply font-headline mb-5 text-4xl;
 }
