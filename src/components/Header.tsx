@@ -1,5 +1,4 @@
 import Hamburger from "hamburger-react";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 
 const menuItems = [
@@ -59,7 +58,6 @@ export default function Header({ currentPath }: { currentPath: string }) {
       if (currentTransform * -1 > (menuWidth * 1) / 4) {
         // If dragged more than 50%
         mobileMenu.style.translate = `-${menuWidth}px`; // Close
-        enableBodyScroll(mobileMenu);
         setMenuOpen(false);
       } else {
         mobileMenu.style.translate = "0"; // Return to open
@@ -75,7 +73,6 @@ export default function Header({ currentPath }: { currentPath: string }) {
     mobileMenu.style.transition = MENU_TRANSITION;
     // show menu
     mobileMenu.style.translate = "0";
-    disableBodyScroll(mobileMenu);
     handleMenuClose(mobileMenu);
   }
 
@@ -84,7 +81,6 @@ export default function Header({ currentPath }: { currentPath: string }) {
     if (mobileMenu === mobileMenuRef.current) return;
     const menuWidth = mobileMenu.offsetWidth;
     mobileMenu.style.translate = `-${menuWidth}px`; // Close
-    enableBodyScroll(mobileMenu);
     setMenuOpen(false);
   }
 
