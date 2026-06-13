@@ -3,9 +3,9 @@ import { useEffect, useRef, useState, type MouseEvent } from "react";
 
 const menuItems = [
   { name: "Edwar Martinez", href: "/" },
-  { name: "Experience", href: "/my-work" },
-  { name: "About", href: "/contact-me" },
-  { name: "Contact", href: "/contact-me" },
+  { name: "Experience", href: "/#experience" },
+  { name: "About", href: "/#about" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 const MENU_TRANSITION = "translate 0.3s ease-out";

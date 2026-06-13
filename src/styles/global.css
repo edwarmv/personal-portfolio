@@ -16,6 +16,7 @@
   --color-surface: #faf7f0;
   --color-on-surface: #4a4947;
   --color-primary: #b17457;
+  --color-on-primary: #faf7f0;
   --color-secondary: #d8d2c2;
 }
 
@@ -90,5 +91,5 @@ body {
 }
 
 .section-heading {
-  @apply font-headline mb-5 text-4xl;
+  @apply font-headline my-5 text-4xl;
 }

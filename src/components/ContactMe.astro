@@ -1,115 +1,69 @@
 ---
 import { Send } from '@lucide/astro';
-import type { HTMLAttributes } from 'astro/types';
-import { Mail } from '@lucide/astro';
 import { Icon } from 'astro-icon/components';
-
-type Props = HTMLAttributes<'section'>;
-
-const { class: classList, ...attrs } = Astro.props;
+import FormField from './FormField.astro';
+import Input from './Input.astro';
+import Label from './Label.astro';
+import Textarea from './Textarea.astro';
+import Button from './Button.astro';
 ---
 
-<section class:list={[classList]} {...attrs}>
-  <h2 class="mb-4 text-2xl font-bold">Contact me.</h2>
+<section class="pt-header-fixed-adjust section h-dvh" id="contact">
+  <h2 class="section-heading">Contact me.</h2>
   <p class="mb-4">
     I'm always eager to explore new opportunities and take on exciting projects.
     If you have a project in mind, or just want to say hi, feel free to send me
     a message.
   </p>
-  <div
-    class="rounded-md border border-black/15 bg-white p-5 dark:border-neutral-800 dark:bg-[#161617]"
-  >
-    <form
-      name="contact"
-      data-netlify="true"
-      class="rounded-md border border-black/15"
-    >
-      <div class="name grid">
-        <label for="name">Name<span class="text-red-500">*</span></label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="Your Name"
-          required
-        />
-      </div>
-      <div class="email grid">
-        <label for="email">Email<span class="text-red-500">*</span></label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="tim@magic.com"
-          required
-        />
-      </div>
-
-      <div class="message grid">
-        <label for="message">Message<span class="text-red-500">*</span></label>
-        <textarea
-          rows="4"
-          name="message"
-          id="message"
-          placeholder="Hello there, I would like to ask you about..."
-          required></textarea>
-      </div>
-
-      <div class="submit-btn text-right">
-        <button
-          class="group ml-auto inline-flex w-fit items-center rounded-md bg-neutral-200 px-4 py-2 font-medium text-neutral-700 duration-200 hover:bg-neutral-300 disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
-          type="submit"><Send class="mr-2 h-[16px] w-auto" /> Send</button
-        >
-      </div>
-    </form>
-    <article class="alternative-contact">
-      <p class="mb-4">You can also reach me with...</p>
-      <div class="flex gap-4">
-        <!-- <a href="mailto:edwar.mv@icloud.com" class="flex items-center"
-          ><Mail class="mr-1" /> Email</a
-        > -->
-        <a
-          href="https://www.linkedin.com/in/edwar-martinez-vale-605291224/"
-          target="_blank"
-          class="flex items-center"
-          ><Icon class="mr-1 h-[24px] w-auto" name="linkedin" /> LinkedIn</a
-        >
-      </div>
-    </article>
-  </div>
+  <form name="contact" data-netlify="true" class="mb-4 flex flex-col gap-4">
+    <FormField>
+      <Label slot="label" required for="name">Your Name</Label>
+      <Input
+        slot="input"
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Your Name"
+        required
+      />
+    </FormField>
+    <FormField>
+      <Label slot="label" required for="email">Email</Label>
+      <Input
+        slot="input"
+        type="email"
+        name="email"
+        id="email"
+        placeholder="tim@magic.com"
+        required
+      />
+    </FormField>
+    <FormField>
+      <Label slot="label" required for="message">Message</Label>
+      <Textarea
+        slot="textarea"
+        rows="4"
+        name="message"
+        id="message"
+        placeholder="Hello there, I would like to ask you about..."
+        required
+      />
+    </FormField>
+    <div class="flex justify-end">
+      <Button type="submit">
+        <Send />Send
+      </Button>
+    </div>
+  </form>
+  <article>
+    <p class="mb-4">You can also reach me with...</p>
+    <div class="flex gap-4">
+      <a
+        href="https://www.linkedin.com/in/edwar-martinez-vale/"
+        target="_blank"
+        class="flex items-center"
+        ><Icon class="mr-1 h-[24px] w-auto" name="linkedin" /> LinkedIn</a
+      >
+    </div>
+  </article>
 </section>
-
-<style>
-  @reference '../styles/global.css';
-
-  form {
-    display: grid;
-    grid-template:
-      'name email'
-      'message message'
-      'submit-btn submit-btn';
-    gap: 1rem;
-    .name {
-      grid-area: name;
-    }
-    .email {
-      grid-area: email;
-    }
-    .message {
-      grid-area: message;
-    }
-    .submit-btn {
-      grid-area: submit-btn;
-    }
-    input,
-    textarea {
-      @apply my-2 w-full rounded-lg border border-neutral-300 p-2 font-normal text-neutral-800 outline-0 duration-200 focus:border-blue-600 dark:border-neutral-800 dark:bg-transparent dark:text-white focus:dark:border-neutral-700;
-    }
-  }
-
-  .alternative-contact {
-    a {
-      @apply rounded-md border border-[#e5e7eb] px-4 py-2 duration-200 hover:bg-[#f2f3f5] dark:border-neutral-800 dark:bg-[#161617] dark:text-white dark:hover:border-neutral-700 dark:hover:bg-[#202021];
-    }
-  }
-</style>

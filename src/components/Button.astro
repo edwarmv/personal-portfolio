@@ -8,7 +8,7 @@ const { class: classList = '', ...attrs } = Astro.props;
 
 <button
   class:list={[
-    'cursor-pointer rounded-md p-2 text-neutral-700 hover:bg-black/10 hover:text-neutral-800 dark:text-neutral-400 dark:hover:bg-white/10 dark:hover:text-neutral-200',
+    'bg-primary text-on-primary flex items-center gap-1 px-4 py-2',
     classList,
   ]}
   {...attrs}
