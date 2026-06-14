@@ -1,10 +1,11 @@
 ---
-
+import { Image } from 'astro:assets';
+import personalPhoto from '../assets/personal-photo.webp';
 ---
 
-<section class="pt-header-fixed-adjust section h-dvh" id="about">
+<section class="pt-header-fixed-adjust section min-h-dvh" id="about">
   <h2 class="section-heading">About</h2>
-  <p>
+  <p class="mb-text-spacing">
     Hi, I’m Edwar, a full-stack engineer with a strong focus on front-end
     development and a passion for using technology to solve real problems for
     people. I enjoy building products from the ground up, from system design and
@@ -13,7 +14,7 @@
     devices. My goal is always to build systems that are both technically solid
     and genuinely useful.
   </p>
-  <p>
+  <p class="mb-text-spacing">
     My experience spans the full development lifecycle, with particular strength
     in crafting pixel-perfect interfaces and responsive designs that adapt
     seamlessly to different screen sizes. I pay close attention to
@@ -23,4 +24,9 @@
     overall experience. This end-to-end perspective helps me build products that
     are reliable, scalable, and user-centered.
   </p>
+  <Image
+    src={personalPhoto}
+    alt="Edwar's personal photo"
+    class="border-surface border-8"
+  />
 </section>
