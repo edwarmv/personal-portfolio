@@ -65,7 +65,8 @@ body {
   color: var(--color-on-surface);
   font-family: "Geist Variable", ui-monospace, monospace;
   background: var(--color-surface);
-  @apply text-step-0;
+  font-size: var(--text-step-0);
+  line-height: var(--text-step-0--line-height);
 }
 
 .gradient {
@@ -87,9 +88,15 @@ body {
 }
 
 .section {
-  @apply max-w-content-width mx-auto w-full px-6;
+  max-width: var(--container-content-width);
+  margin-inline: auto;
+  width: 100%;
+  padding-inline: calc(var(--spacing) * 6);
 }
 
 .section-heading {
-  @apply font-headline my-5 text-4xl;
+  font-family: var(--font-headline);
+  margin-block: calc(var(--spacing) * 5);
+  font-size: var(--text-4xl);
+  line-height: var(--text-4xl--line-height);
 }

@@ -1,13 +1,7 @@
 import Hamburger from "hamburger-react";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 
-const menuItems = [
-  { name: "Edwar Martinez", href: "/" },
-  { name: "Experience", href: "/#experience" },
-  { name: "About", href: "/#about" },
-  { name: "Contact", href: "/#contact" },
-];
-
+const menuItems = [{ name: "Edwar Martinez", href: "/" }];
 const MENU_TRANSITION = "translate 0.3s ease-out";
 
 export default function Header({ currentPath }: { currentPath: string }) {
@@ -57,8 +51,7 @@ export default function Header({ currentPath }: { currentPath: string }) {
 
       if (currentTransform * -1 > (menuWidth * 1) / 4) {
         // If dragged more than 50%
-        mobileMenu.style.translate = `-${menuWidth}px`; // Close
-        setMenuOpen(false);
+        closeMenu(mobileMenu);
       } else {
         mobileMenu.style.translate = "0"; // Return to open
       }
@@ -77,8 +70,12 @@ export default function Header({ currentPath }: { currentPath: string }) {
   }
 
   function handleMenuContainerClick(e: MouseEvent<HTMLElement>) {
-    const mobileMenu = e.target as HTMLElement;
+    const mobileMenu = e.currentTarget as HTMLElement;
     if (mobileMenu === mobileMenuRef.current) return;
+    closeMenu(mobileMenu);
+  }
+
+  function closeMenu(mobileMenu: HTMLElement) {
     const menuWidth = mobileMenu.offsetWidth;
     mobileMenu.style.translate = `-${menuWidth}px`; // Close
     setMenuOpen(false);
