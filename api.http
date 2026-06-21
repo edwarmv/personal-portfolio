@@ -1,0 +1,8 @@
+POST http://localhost:4321/api/send-email.json HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "message": "Hello, Kulala!"
+}
