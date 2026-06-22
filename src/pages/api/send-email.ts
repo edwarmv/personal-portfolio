@@ -12,23 +12,11 @@ const transporter = createTransport({
   },
 });
 
-export const POST = (async ({ request }) => {
+export const POST = (async ({ request, redirect }) => {
   const body = await request.formData();
   const requiredFields = ["name", "email", "message"];
   if (!requiredFields.every((key) => body.has(key))) {
-    return new Response(
-      JSON.stringify({
-        status: "fail",
-        data: requiredFields.reduce((acc, key) => {
-          if (body.has(key)) {
-            return acc;
-          }
-
-          return { ...acc, [key]: "Field is required" };
-        }, {}),
-      }),
-      { status: 400 },
-    );
+    return redirect("/error-message");
   }
   try {
     await transporter.sendMail({
@@ -38,22 +26,8 @@ export const POST = (async ({ request }) => {
       text: String(body.get("message")),
     });
 
-    return new Response(
-      JSON.stringify({
-        status: "success",
-        data: {
-          message: "Email sent successfully",
-        },
-      }),
-      { status: 200 },
-    );
+    return redirect("/success-message");
   } catch (err) {
-    return new Response(
-      JSON.stringify({
-        status: "error",
-        message: "Failed to send email",
-      }),
-      { status: 500 },
-    );
+    return redirect("/error-message");
   }
 }) satisfies APIRoute;

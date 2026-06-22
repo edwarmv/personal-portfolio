@@ -10,19 +10,22 @@ import Button from './Button.tsx';
 
 <section class="pt-header-fixed-adjust section h-dvh" id="contact">
   <h2 class="section-heading">Contact me.</h2>
-  <p class="mb-4">
+  <p class="mb-text-spacing">
     I'm always eager to explore new opportunities and take on exciting projects.
     If you have a project in mind, or just want to say hi, feel free to send me
     a message.
   </p>
-  <form name="contact" data-netlify="true" class="mb-4 flex flex-col gap-4">
+  <form
+    class="mb-text-spacing flex flex-col gap-4"
+    action="/api/send-email"
+    method="POST"
+  >
     <FormField>
       <Label slot="label" required for="name">Your Name</Label>
       <Input
         slot="input"
         type="text"
         name="name"
-        id="name"
         placeholder="Your Name"
         required
       />
@@ -33,7 +36,6 @@ import Button from './Button.tsx';
         slot="input"
         type="email"
         name="email"
-        id="email"
         placeholder="tim@magic.com"
         required
       />
@@ -44,7 +46,6 @@ import Button from './Button.tsx';
         slot="textarea"
         rows="4"
         name="message"
-        id="message"
         placeholder="Hello there, I would like to ask you about..."
         required
       />
@@ -56,7 +57,7 @@ import Button from './Button.tsx';
     </div>
   </form>
   <article>
-    <p class="mb-4">You can also reach me with...</p>
+    <p class="mb-text-spacing">You can also reach me with...</p>
     <div class="flex gap-4">
       <a
         href="https://www.linkedin.com/in/edwar-martinez-vale/"

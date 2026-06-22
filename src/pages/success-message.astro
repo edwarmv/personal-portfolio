@@ -1,0 +1,17 @@
+---
+import ButtonLink from '../components/ButtonLink';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Success Message" description="Successful message was sended">
+  <section class="pt-header-fixed-adjust section h-dvh">
+    <h2 class="section-heading">Message sent successfully!</h2>
+    <p class="mb-text-spacing">
+      Thank you for reaching out! Your message has been sent successfully. I
+      will get back to you as soon as possible.
+    </p>
+    <div class="flex justify-end">
+      <ButtonLink href="/" color="primary">Back to Home</ButtonLink>
+    </div>
+  </section>
+</Layout>
