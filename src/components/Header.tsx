@@ -6,16 +6,39 @@ const MENU_TRANSITION = "translate 0.3s ease-out";
 
 export default function Header({ currentPath }: { currentPath: string }) {
   const [isMenuOpen, setMenuOpen] = useState(false);
+  const [hasScrolledPastHeader, setHasScrolledPastHeader] = useState(false);
   const mobileMenuContainerRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const header = headerRef.current!;
-    document.documentElement.style.setProperty(
-      "--header-height",
-      `${header.offsetHeight}px`,
-    );
+    const header = headerRef.current;
+    if (!header) {
+      throw new Error("Header ref is not set");
+    }
+    const setHeaderHeight = () => {
+      document.documentElement.style.setProperty(
+        "--header-height",
+        `${header.offsetHeight}px`,
+      );
+    };
+
+    const handleHeaderScroll = () => {
+      setHasScrolledPastHeader(window.scrollY > header.offsetHeight);
+    };
+
+    setHeaderHeight();
+    handleHeaderScroll();
+
+    window.addEventListener("scroll", handleHeaderScroll, { passive: true });
+    window.addEventListener("resize", setHeaderHeight);
+    window.addEventListener("resize", handleHeaderScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleHeaderScroll);
+      window.removeEventListener("resize", setHeaderHeight);
+      window.removeEventListener("resize", handleHeaderScroll);
+    };
   }, []);
 
   function handleMenuClose(mobileMenu: HTMLElement) {
@@ -87,12 +110,14 @@ export default function Header({ currentPath }: { currentPath: string }) {
         className="font-headline fixed right-0 left-0 z-10"
         ref={headerRef}
       >
-        <nav className="bg-surface p-6 shadow-md">
-          <ul className="flex items-center justify-between">
+        <nav
+          className={`p-6 transition-[background-color,box-shadow] duration-200 ${hasScrolledPastHeader ? "bg-surface shadow-md" : "bg-transparent shadow-none"}`}
+        >
+          <ul className="max-w-content-width mx-auto flex items-center justify-between">
             <li className="text-xl">
               <a href="/">Edwar Martinez</a>
             </li>
-            <li>
+            <li className="lg:hidden">
               <Hamburger
                 toggled={isMenuOpen}
                 toggle={setMenuOpen}

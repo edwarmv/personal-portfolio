@@ -4,7 +4,7 @@
 
 @theme {
   --container-content-width: 1200px;
-  --spacing-text-spacing: 0.75rem;
+  --spacing-text-spacing: 1.75rem;
   --font-headline: "Montserrat Variable";
   --font-body: "Geist Mono";
   --padding-header-fixed-adjust: var(--header-height);

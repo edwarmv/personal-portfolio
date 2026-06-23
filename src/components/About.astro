@@ -5,28 +5,32 @@ import personalPhoto from '../assets/personal-photo.webp';
 
 <section class="pt-header-fixed-adjust section min-h-dvh" id="about">
   <h2 class="section-heading">About</h2>
-  <p class="mb-text-spacing">
-    Hi, I’m Edwar, a full-stack engineer with a strong focus on front-end
-    development and a passion for using technology to solve real problems for
-    people. I enjoy building products from the ground up, from system design and
-    architecture all the way to deployment. I care deeply about creating clean,
-    responsive, and accessible user experiences that feel intuitive across
-    devices. My goal is always to build systems that are both technically solid
-    and genuinely useful.
-  </p>
-  <p class="mb-text-spacing">
-    My experience spans the full development lifecycle, with particular strength
-    in crafting pixel-perfect interfaces and responsive designs that adapt
-    seamlessly to different screen sizes. I pay close attention to
-    accessibility, usability, and performance, always aiming to make systems
-    simple to interact with and smooth to use. Beyond the front end, I also
-    think carefully about how backend services and system operations support the
-    overall experience. This end-to-end perspective helps me build products that
-    are reliable, scalable, and user-centered.
-  </p>
-  <Image
-    src={personalPhoto}
-    alt="Edwar's personal photo"
-    class="border-surface border-8"
-  />
+  <div class="lg:gap-text-spacing lg:flex">
+    <div>
+      <p class="mb-text-spacing">
+        Hi, I’m Edwar, a full-stack engineer with a strong focus on front-end
+        development and a passion for using technology to solve real problems
+        for people. I enjoy building products from the ground up, from system
+        design and architecture all the way to deployment. I care deeply about
+        creating clean, responsive, and accessible user experiences that feel
+        intuitive across devices. My goal is always to build systems that are
+        both technically solid and genuinely useful.
+      </p>
+      <p class="mb-text-spacing">
+        My experience spans the full development lifecycle, with particular
+        strength in crafting pixel-perfect interfaces and responsive designs
+        that adapt seamlessly to different screen sizes. I pay close attention
+        to accessibility, usability, and performance, always aiming to make
+        systems simple to interact with and smooth to use. Beyond the front end,
+        I also think carefully about how backend services and system operations
+        support the overall experience. This end-to-end perspective helps me
+        build products that are reliable, scalable, and user-centered.
+      </p>
+    </div>
+    <Image
+      src={personalPhoto}
+      alt="Edwar's personal photo"
+      class="border-surface block border-8 lg:w-[500px] lg:flex-none lg:self-start"
+    />
+  </div>
 </section>
