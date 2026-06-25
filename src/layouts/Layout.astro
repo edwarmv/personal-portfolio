@@ -27,7 +27,7 @@ const { pathname } = Astro.url;
   </head>
   <body>
     <Header client:only="react" currentPath={pathname} />
-    <main class="noise frosted-backdrop">
+    <main class="noise frosted-backdrop pb-16">
       <slot />
     </main>
     <Footer />
