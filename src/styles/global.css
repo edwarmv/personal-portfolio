@@ -14,8 +14,8 @@
   --text-step-8--line-height: 1.2;
   --text-step-0: var(--step-0);
   --text-step-0--line-height: 1.5;
-  --color-surface: #faf7f0;
-  --color-on-surface: #4a4947;
+  --color-surface: light-dark(#faf7f0, #4a4947);
+  --color-on-surface: light-dark(#4a4947, #faf7f0);
   --color-primary: #b17457;
   --color-on-primary: #faf7f0;
   --color-secondary: #d8d2c2;
@@ -59,8 +59,16 @@
   --_gradient-blend-mode: normal;
   --_gradient-blur: 0px;
   --_gradient:
-    radial-gradient(at 54% 71%, #f99052 0px, transparent 50%),
-    radial-gradient(at 99% 72%, #7fd1ae 0px, transparent 50%);
+    radial-gradient(
+      at 54% 71%,
+      light-dark(#f99052, #fa8b55) 0px,
+      transparent 50%
+    ),
+    radial-gradient(
+      at 99% 72%,
+      light-dark(#7fd1ae, #d3fbd8) 0px,
+      transparent 50%
+    );
 }
 
 body {
