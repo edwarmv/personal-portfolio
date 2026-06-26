@@ -8,6 +8,12 @@ import node from "@astrojs/node";
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.edwarmv.com",
+  security: {
+    allowedDomains: [
+      { hostname: "www.edwarmv.com" },
+      { hostname: "edwarmv.com" },
+    ],
+  },
   adapter: node({
     mode: "standalone",
   }),
