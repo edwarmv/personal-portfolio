@@ -1,0 +1,20 @@
+---
+import ButtonLink from '../components/ButtonLink';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Error Message"
+  description="Something went wrong when sending message"
+>
+  <section class="pt-header-fixed-adjust section h-dvh">
+    <h2 class="section-heading">Error</h2>
+    <p class="mb-text-spacing">
+      Sorry, something went wrong when sending your message. Please try again
+      later.
+    </p>
+    <div class="flex justify-end">
+      <ButtonLink href="/" color="primary">Back to Home</ButtonLink>
+    </div>
+  </section>
+</Layout>

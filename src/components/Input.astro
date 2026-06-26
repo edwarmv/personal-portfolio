@@ -1,0 +1,12 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'input'> {}
+
+const { class: classList, ...props } = Astro.props;
+---
+
+<input
+  class:list={['bg-surface outline-primary border-primary p-2', classList]}
+  {...props}
+/>

@@ -1,117 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ContactMe from '../components/ContactMe.astro';
-import { CircleUserRound, Rocket, FileText } from '@lucide/astro';
+import HeroSection from '../components/HeroSection.astro';
+import Experience from '../components/Experience.astro';
+import About from '../components/About.astro';
 ---
 
 <Layout
   title="Edwar Martinez"
   description="Hi, I'm Edwar 🤘—a passionate Full Stack Web Developer eager to learn and create meaningful solutions that improve people's lives. Explore my portfolio, download my CV, and get in touch."
 >
-  <section class="mb-8 rounded-xl bg-[url(/images/personal-landscape.webp)]">
-    <article class="grid h-full max-w-[550px] content-between p-8 text-white">
-      <div>
-        <h1 class="mb-4 flex gap-4"><CircleUserRound /> INTRODUCTION</h1>
-        <p class="mb-4 text-3xl font-bold">Hi, I'm Edwar 🤘</p>
-        <p class="mb-4">
-          &quot;Passionate <b>Full Stack Web Developer</b> eager to learn and explore
-          all aspects of the tech world, aiming to create meaningful solutions that
-          make people's lives easier.&quot;
-        </p>
-      </div>
-      <div class="rounded-xl p-4 backdrop-blur-md">
-        <p class="mb-4 flex gap-4"><Rocket /> Team Player</p>
-        <p>
-          I'm proactive, collaborative, and enjoy contributing to team
-          efforts—whether it's by proposing solutions, helping others grow, or
-          learning from those around me.
-        </p>
-      </div>
-    </article>
-  </section>
-
-  <section class="mb-8 grid gap-4 md:grid-cols-2">
-    <article>
-      <h2 class="mb-4 text-2xl font-semibold">About me.</h2>
-      <p class="mb-4">
-        Ever since childhood, I've been fascinated by how things work. My
-        journey began in 2016 when I started studying computer science, where I
-        learned the basics of programming and how computers operate and
-        communicate. Since then, I've continued to explore web technologies on
-        my own and remain committed to that path.
-      </p>
-      <p>
-        I'm a skilled developer who enjoys challenges and isn't afraid to try
-        new things.
-      </p>
-    </article>
-    <article
-      class="download-cv grid grid-rows-[min-content_1fr] rounded-xl p-6"
-    >
-      <p class="mb-4 font-semibold text-white">
-        If I’ve caught your attention and you’re interested in my CV, you can
-        download it by clicking the button below.
-      </p>
-      <div class="place-self-center">
-        <a
-          href="https://drive.google.com/file/d/1DNHxV3PoitPLw8ZwpFKZZc5o2dsZ1Z_d/view?usp=drive_link"
-          target="_blank"
-          class="flex cursor-pointer items-center rounded-md bg-[#FF3B00] p-2 text-white"
-          ><FileText class="mr-1" /> Download CV</a
-        >
-      </div>
-    </article>
-  </section>
-
-  <ContactMe class="mb-8" />
+  <HeroSection />
+  <Experience />
+  <About />
+  <ContactMe />
 </Layout>
-
-<style>
-  /* true */
-  .download-cv {
-    margin: 0;
-    --x: calc(var(--posX, 0) * 1px);
-    --y: calc(var(--posY, 0) * 1px);
-    background-image:
-      linear-gradient(115deg, rgb(211 255 215), rgb(0 0 0)),
-      radial-gradient(
-        90% 100% at calc(50% + var(--x)) calc(0% + var(--y)),
-        rgb(200 200 200),
-        rgb(022 000 045)
-      ),
-      radial-gradient(
-        100% 100% at calc(80% - var(--x)) calc(0% - var(--y)),
-        rgb(250 255 000),
-        rgb(036 000 000)
-      ),
-      radial-gradient(
-        150% 210% at calc(100% + var(--x)) calc(0% + var(--y)),
-        rgb(020 175 125),
-        rgb(000 010 255)
-      ),
-      radial-gradient(
-        100% 100% at calc(100% - var(--x)) calc(30% - var(--y)),
-        rgb(255 077 000),
-        rgb(000 200 255)
-      ),
-      linear-gradient(60deg, rgb(255 000 000), rgb(120 086 255));
-    background-blend-mode:
-      overlay, overlay, difference, difference, difference, normal;
-  }
-</style>
-
-<script is:inline>
-  document
-    .querySelector('.download-cv')
-    .addEventListener('pointermove', (e) => {
-      const { currentTarget: el, clientX: x, clientY: y } = e;
-      const {
-        top: t,
-        left: l,
-        width: w,
-        height: h,
-      } = el.getBoundingClientRect();
-      el.style.setProperty('--posX', x - l - w / 2);
-      el.style.setProperty('--posY', y - t - h / 2);
-    });
-</script>
