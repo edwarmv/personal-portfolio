@@ -1,10 +1,18 @@
+---
+const currentLocale = Astro.currentLocale;
+---
+
 <footer class="section flex justify-between py-12">
   <section class="grid content-start">
-    <p class="font-bold">Important Links</p>
-    <a href="/">Home</a>
+    <p class="font-bold">
+      {currentLocale === 'es' ? 'Enlaces Importantes' : 'Important Links'}
+    </p>
+    <a href="/">{currentLocale === 'es' ? 'Inicio' : 'Home'}</a>
   </section>
   <section class="grid content-start">
-    <p class="font-bold">Social</p>
+    <p class="font-bold">
+      {currentLocale === 'es' ? 'Redes Sociales' : 'Social'}
+    </p>
     <a href="https://www.linkedin.com/in/edwar-martinez-vale" target="_blank"
       >LinkedIn</a
     >

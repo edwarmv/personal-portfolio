@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ContactMe from '../../components/ContactMe.astro';
+import HeroSection from '../../components/HeroSection.astro';
+import Experience from '../../components/Experience.astro';
+import About from '../../components/About.astro';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'es' } }];
+}
+
+const { lang } = Astro.params;
+---
+
+<Layout
+  title="Edwar Martinez"
+  description={lang === 'es'
+    ? 'Hola, soy Edwar 🤘—un apasionado Desarrollador Web Full Stack ansioso por aprender y crear soluciones significativas que mejoren la vida de las personas. Explora mi portafolio, descarga mi CV y ponte en contacto.'
+    : "Hi, I'm Edwar 🤘—a passionate Full Stack Web Developer eager to learn and create meaningful solutions that improve people's lives. Explore my portfolio, download my CV, and get in touch."}
+>
+  <HeroSection />
+  <Experience />
+  <About />
+  <ContactMe />
+</Layout>

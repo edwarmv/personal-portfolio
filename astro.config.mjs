@@ -7,24 +7,31 @@ import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.edwarmv.com",
-  security: {
-    allowedDomains: [
-      { hostname: "www.edwarmv.com" },
-      { hostname: "edwarmv.com" },
-    ],
-  },
   adapter: node({
     mode: "standalone",
   }),
-  vite: {
-    plugins: [tailwindcss()],
-  },
-  integrations: [icon(), react()],
   env: {
     schema: {
       SMTP_USER: envField.string({ context: "server", access: "secret" }),
       SMTP_PASS: envField.string({ context: "server", access: "secret" }),
     },
+  },
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "es"],
+    routing: {
+      prefixDefaultLocale: true,
+    },
+  },
+  integrations: [icon(), react()],
+  security: {
+    allowedDomains: [
+      { hostname: "edwarmv.com" },
+      { hostname: "www.edwarmv.com" },
+    ],
+  },
+  site: "https://www.edwarmv.com",
+  vite: {
+    plugins: [tailwindcss()],
   },
 });

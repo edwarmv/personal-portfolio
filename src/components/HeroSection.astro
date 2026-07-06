@@ -1,6 +1,9 @@
 ---
 import { FileText } from '@lucide/astro';
 import ButtonLink from './ButtonLink';
+import { type Lang } from '../i18n/default-lang-options';
+
+const currentLocale = Astro.currentLocale as Lang;
 ---
 
 <div class="gradient">
@@ -10,23 +13,36 @@ import ButtonLink from './ButtonLink';
     >
       <article class="w-full max-w-2xl">
         <h1 class="font-headline text-step-7 mb-12 font-bold">
-          I build to solve real problems for real people.
+          {
+            currentLocale === 'es'
+              ? 'Construyo para resolver problemas reales para personas reales.'
+              : 'I build to solve real problems for real people.'
+          }
         </h1>
         <p class="mb-12">
-          Let’s turn your idea into a reliable product — or help your
-          organization save time and money by optimizing and automating
-          processes with systems tailored to your needs.
+          {
+            currentLocale === 'es'
+              ? 'Convirtamos tu idea en un producto confiable — o ayudemos a tu organización a ahorrar tiempo y dinero optimizando y automatizando procesos con sistemas adaptados a tus necesidades.'
+              : 'Let’s turn your idea into a reliable product — or help your organization save time and money by optimizing and automating processes with systems tailored to your needs.'
+          }
         </p>
         <div class="flex justify-end gap-4">
           <ButtonLink
-            href="https://filebrowser.edwarmv.com/api/public/dl/PP3zVbbi?inline=true"
+            href={currentLocale === 'es'
+              ? 'https://filebrowser.edwarmv.com/api/public/dl/bDMXqzd2?inline=true'
+              : 'https://filebrowser.edwarmv.com/api/public/dl/PP3zVbbi?inline=true'}
             target="_blank"
             color="secondary"
           >
-            <FileText class="mr-1" /> Download Resume
+            <FileText class="mr-1" />
+            {currentLocale === 'es' ? 'Descargar CV' : 'Download Resume'}
           </ButtonLink>
 
-          <ButtonLink href="/#contact">Get in touch</ButtonLink>
+          <ButtonLink href={`/${currentLocale}#contact`}
+            >{
+              currentLocale === 'es' ? 'Ponte en contacto' : 'Get in touch'
+            }</ButtonLink
+          >
         </div>
       </article>
     </section>

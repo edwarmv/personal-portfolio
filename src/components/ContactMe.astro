@@ -6,14 +6,20 @@ import Input from './Input.astro';
 import Label from './Label.astro';
 import Textarea from './Textarea.astro';
 import Button from './Button.tsx';
+
+const currentLocale = Astro.currentLocale;
 ---
 
 <section class="pt-header-fixed-adjust section" id="contact">
-  <h2 class="section-heading">Contact me.</h2>
+  <h2 class="section-heading">
+    {currentLocale === 'es' ? 'Contáctame' : 'Contact me.'}
+  </h2>
   <p class="mb-text-spacing">
-    I'm always eager to explore new opportunities and take on exciting projects.
-    If you have a project in mind, or just want to say hi, feel free to send me
-    a message.
+    {
+      currentLocale === 'es'
+        ? 'Siempre estoy ansioso por explorar nuevas oportunidades y asumir proyectos emocionantes. Si tienes un proyecto en mente, o simplemente quieres saludar, no dudes en enviarme un mensaje.'
+        : "I'm always eager to explore new opportunities and take on exciting projects. If you have a project in mind, or just want to say hi, feel free to send me a message."
+    }
   </p>
   <form
     class="mb-text-spacing mx-auto flex max-w-2xl flex-col gap-4"
@@ -21,49 +27,66 @@ import Button from './Button.tsx';
     method="POST"
   >
     <FormField>
-      <Label slot="label" required for="name">Your Name</Label>
+      <Label slot="label" required for="name">
+        {currentLocale === 'es' ? 'Tu Nombre' : 'Your Name'}
+      </Label>
       <Input
         slot="input"
         type="text"
         name="name"
-        placeholder="Your Name"
+        placeholder={currentLocale === 'es' ? 'Tu Nombre' : 'Your Name'}
         required
       />
     </FormField>
     <FormField>
-      <Label slot="label" required for="email">Email</Label>
+      <Label slot="label" required for="email">
+        {currentLocale === 'es' ? 'Tu Correo Electrónico' : 'Your Email'}
+      </Label>
       <Input
         slot="input"
         type="email"
         name="email"
-        placeholder="tim@magic.com"
+        placeholder={currentLocale === 'es'
+          ? 'Tu Correo Electrónico'
+          : 'Your Email'}
         required
       />
     </FormField>
     <FormField>
-      <Label slot="label" required for="message">Message</Label>
+      <Label slot="label" required for="message">
+        {currentLocale === 'es' ? 'Tu Mensaje' : 'Your Message'}
+      </Label>
       <Textarea
         slot="textarea"
         rows="4"
         name="message"
-        placeholder="Hello there, I would like to ask you about..."
+        placeholder={currentLocale === 'es'
+          ? 'Hola, me gustaría preguntarte sobre...'
+          : 'Hello there, I would like to ask you about...'}
         required
       />
     </FormField>
     <div class="flex justify-end">
       <Button type="submit">
-        <Send />Send
+        <Send />
+        {currentLocale === 'es' ? 'Enviar' : 'Send'}
       </Button>
     </div>
   </form>
   <article>
-    <p class="mb-text-spacing">You can also reach me with...</p>
+    <p class="mb-text-spacing">
+      {
+        currentLocale === 'es'
+          ? 'También puedes contactarme a través de...'
+          : 'You can also reach me with...'
+      }
+    </p>
     <div class="flex gap-4">
       <a
         href="https://www.linkedin.com/in/edwar-martinez-vale/"
         target="_blank"
         class="flex items-center"
-        ><Icon class="mr-1 h-[24px] w-auto" name="linkedin" /> LinkedIn</a
+        ><Icon class="mr-1 h-6 w-auto" name="linkedin" /> LinkedIn</a
       >
     </div>
   </article>

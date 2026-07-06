@@ -1,17 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ContactMe from '../components/ContactMe.astro';
-import HeroSection from '../components/HeroSection.astro';
-import Experience from '../components/Experience.astro';
-import About from '../components/About.astro';
----
+import { defaultLanguage } from '../i18n/default-lang-options';
 
-<Layout
-  title="Edwar Martinez"
-  description="Hi, I'm Edwar 🤘—a passionate Full Stack Web Developer eager to learn and create meaningful solutions that improve people's lives. Explore my portfolio, download my CV, and get in touch."
->
-  <HeroSection />
-  <Experience />
-  <About />
-  <ContactMe />
-</Layout>
+export const prerender = false;
+
+const locale = Astro.preferredLocale ?? defaultLanguage;
+
+return Astro.redirect(`/${locale}`, 307);
+---

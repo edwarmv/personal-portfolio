@@ -1,36 +1,35 @@
 ---
 import { Image } from 'astro:assets';
 import personalPhoto from '../assets/personal-photo.webp';
+
+const currentLocale = Astro.currentLocale;
 ---
 
 <section class="pt-header-fixed-adjust section" id="about">
-  <h2 class="section-heading">About</h2>
+  <h2 class="section-heading">
+    {currentLocale === 'es' ? 'Acerca de' : 'About'}
+  </h2>
   <div class="lg:gap-text-spacing lg:flex">
     <div>
       <p class="mb-text-spacing">
-        Hi, I’m Edwar, a full-stack engineer with a strong focus on front-end
-        development and a passion for using technology to solve real problems
-        for people. I enjoy building products from the ground up, from system
-        design and architecture all the way to deployment. I care deeply about
-        creating clean, responsive, and accessible user experiences that feel
-        intuitive across devices. My goal is always to build systems that are
-        both technically solid and genuinely useful.
+        {
+          currentLocale === 'es'
+            ? 'Hola, soy Edwar, un ingeniero full-stack con un fuerte enfoque en el desarrollo front-end y una pasión por usar la tecnología para resolver problemas reales para las personas. Disfruto construir productos desde cero, desde el diseño y la arquitectura del sistema hasta el despliegue. Me importa profundamente crear experiencias de usuario limpias, receptivas y accesibles que se sientan intuitivas en todos los dispositivos. Mi objetivo siempre es construir sistemas que sean tanto técnicamente sólidos como genuinamente útiles.'
+            : 'Hi, I’m Edwar, a full-stack engineer with a strong focus on front-end development and a passion for using technology to solve real problems for people. I enjoy building products from the ground up, from system design and architecture all the way to deployment. I care deeply about creating clean, responsive, and accessible user experiences that feel intuitive across devices. My goal is always to build systems that are both technically solid and genuinely useful.'
+        }
       </p>
       <p class="mb-text-spacing">
-        My experience spans the full development lifecycle, with particular
-        strength in crafting pixel-perfect interfaces and responsive designs
-        that adapt seamlessly to different screen sizes. I pay close attention
-        to accessibility, usability, and performance, always aiming to make
-        systems simple to interact with and smooth to use. Beyond the front end,
-        I also think carefully about how backend services and system operations
-        support the overall experience. This end-to-end perspective helps me
-        build products that are reliable, scalable, and user-centered.
+        {
+          currentLocale === 'es'
+            ? 'Mi experiencia abarca todo el ciclo de desarrollo, con una fortaleza particular en la creación de interfaces pixel-perfect y diseños responsivos que se adaptan perfectamente a diferentes tamaños de pantalla. Presto mucha atención a la accesibilidad, la usabilidad y el rendimiento, siempre con el objetivo de hacer que los sistemas sean fáciles de interactuar y suaves de usar. Más allá del front-end, también pienso cuidadosamente en cómo los servicios backend y las operaciones del sistema apoyan la experiencia general. Esta perspectiva de extremo a extremo me ayuda a construir productos que son confiables, escalables y centrados en el usuario.'
+            : 'My experience spans the full development lifecycle, with particular strength in crafting pixel-perfect interfaces and responsive designs that adapt seamlessly to different screen sizes. I pay close attention to accessibility, usability, and performance, always aiming to make systems simple to interact with and smooth to use. Beyond the front end, I also think carefully about how backend services and system operations support the overall experience. This end-to-end perspective helps me build products that are reliable, scalable, and user-centered.'
+        }
       </p>
     </div>
     <Image
       src={personalPhoto}
       alt="Edwar's personal photo"
-      class="border-surface block border-8 lg:w-[500px] lg:flex-none lg:self-start"
+      class="border-surface block border-8 lg:w-125 lg:flex-none lg:self-start"
     />
   </div>
 </section>
